@@ -1,26 +1,4 @@
-// Initialize fade-in animations for sections
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.section, .gallery-item, .transparency-warning, .support-section');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
-
-            // Tech interaction effects for tags
-            const techTags = document.querySelectorAll('.tech-tag');
-            techTags.forEach(tag => {
-                tag.addEventListener('mouseenter', () => {
-                    tag.style.transform = 'scale(1.1)';
-                    tag.style.boxShadow = '0 5px 15px rgba(255, 255, 255, 0.2)';
-                });
-                tag.addEventListener('mouseleave', () => {
-                    tag.style.transform = 'scale(1)';
-                    tag.style.boxShadow = 'none';
-                });
-            });
-        });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Meta Tags for SEO -->
@@ -600,7 +578,7 @@
                 <span class="tech-highlight">⚡ Sustainable, tech-focused fashion</span> for developers and creators. We're committed to transparency, environmental responsibility, and creating apparel that reflects your passion for clean code and cleaner planet.
             </p>
             <div class="cta-buttons">
-                <a href="https://wa.me/1234567890?text=Hi! I'm interested in CyberWear pre-orders" class="cta-button cta-whatsapp" target="_blank">
+                <a href="https://wa.me/27743494640?text=Hi! I'm interested in CyberWear pre-orders" class="cta-button cta-whatsapp" target="_blank">
                     📱 WhatsApp Pre-order
                 </a>
                 <a href="https://discord.gg/cyberwear" class="cta-button cta-discord" target="_blank">
@@ -814,20 +792,17 @@
                 element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(element);
             });
-        });
 
-        // Add eco-friendly interaction effects
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add sparkle effect to eco badges
-            const ecoBadges = document.querySelectorAll('.eco-tag, .eco-badge');
-            ecoBadges.forEach(badge => {
-                badge.addEventListener('mouseenter', () => {
-                    badge.style.transform = 'scale(1.1)';
-                    badge.style.boxShadow = '0 5px 15px rgba(50, 205, 50, 0.4)';
+            // Tech interaction effects for tags
+            const techTags = document.querySelectorAll('.tech-tag');
+            techTags.forEach(tag => {
+                tag.addEventListener('mouseenter', () => {
+                    tag.style.transform = 'scale(1.1)';
+                    tag.style.boxShadow = '0 5px 15px rgba(255, 255, 255, 0.2)';
                 });
-                badge.addEventListener('mouseleave', () => {
-                    badge.style.transform = 'scale(1)';
-                    badge.style.boxShadow = 'none';
+                tag.addEventListener('mouseleave', () => {
+                    tag.style.transform = 'scale(1)';
+                    tag.style.boxShadow = 'none';
                 });
             });
         });
