@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Fashion with source code. Eco-friendly, transparent, and made for developers.">
   <meta name="twitter:image" content="https://horizon-synergy.github.io/assets/cyberwear-preview.png">
 
-  <!-- Structured Data (GEO-friendly) -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -54,17 +54,16 @@
       --brand-3: #0ea5e9;
       --ring: rgba(16,185,129,.25);
     }
-    html, body { height: 100%; }
+
+    html, body { height: 100%; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, sans-serif;
+      background: var(--bg); color: var(--text); overflow-x: hidden;
     }
+
     .wrap { min-height: 100dvh; display: grid; grid-template-rows: 1fr auto; position: relative; }
 
-    /* Background */
+    /* Background layers */
     .bg { position: fixed; inset: 0; z-index: -20; overflow: hidden; }
     .grid { position:absolute; inset:0; opacity:.06; background-image: linear-gradient(to right, #fff1 1px, transparent 1px), linear-gradient(to bottom, #fff1 1px, transparent 1px); background-size:32px 32px; }
     .fade { position:absolute; inset:0; -webkit-mask-image: radial-gradient(60% 60% at 50% 40%, #000 60%, transparent 100%); mask-image: radial-gradient(60% 60% at 50% 40%, #000 60%, transparent 100%); }
@@ -73,265 +72,150 @@
     .parallax { position:absolute; inset:0; transform-style: preserve-3d; z-index: -1;}
     .layer { position:absolute; inset:0; will-change: transform; }
 
-    /* Wavy Blob */
+    /* Blob animation */
     .blob { position:absolute; left:50%; top:50%; width:min(1100px, 140vw); height:min(1100px, 140vw); transform:translate(-50%, -50%); opacity:.3; filter: blur(10px); }
     .blob svg { width:100%; height:100%; }
 
     /* Hero */
-    .hero { display:grid; place-items:center; text-align:center; padding: 7rem 1.5rem 3rem; position:relative; z-index:1; }
+    .hero {
+      display:flex; flex-direction: column; justify-content:center; align-items:center;
+      text-align:center; padding:clamp(4rem,8vw,7rem) 1.5rem 3rem; gap:1rem;
+    }
+    .brand { display:flex; flex-direction: column; align-items:center; margin-bottom: 1.5rem; }
+    .brand-name { font-size: clamp(1.75rem,8vw,3rem); font-weight: 800; letter-spacing:-0.02em; line-height:1.1; }
+    .brand-by { font-size: clamp(.85rem,3vw,1.05rem); font-weight:500; color:var(--muted); margin-top:.25rem; }
 
-    /* Brand (CyberWear + by Horizon Synergy) */
-    .brand {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .brand-name {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-    .brand-by {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 0.25rem; /* controlled, logo-like spacing */
-    }
-
-    .title { font-weight: 800; letter-spacing:-.02em; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 0 0 .75rem; }
-    .lead { color: var(--muted); font-size: clamp(1rem, 2vw, 1.35rem); max-width: 45rem; margin: 0 auto 2rem; }
+    .title { font-weight: 800; letter-spacing:-.02em; font-size: clamp(2.5rem,6vw,4.5rem); margin: 0 0 .75rem; }
+    .lead { color: var(--muted); font-size: clamp(1rem,2vw,1.35rem); max-width: 45rem; margin:0 auto 2rem; }
     .cta-row { display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; }
-    .btn { --_bg: var(--brand-2); --_fg:#fff; --_bd: transparent; appearance:none; border-radius: 1rem; padding: .9rem 1.2rem; border:1px solid var(--_bd); background: var(--_bg); color: var(--_fg); font-weight: 700; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; box-shadow: 0 0 0 0 var(--ring); transition: box-shadow .2s, transform .05s, background .2s, border-color .2s, color .2s; }
+    .btn { --_bg: var(--brand-2); --_fg:#fff; --_bd: transparent; appearance:none; border-radius: 1rem; padding: .9rem 1.2rem; border:1px solid var(--_bd); background: var(--_bg); color: var(--_fg); font-weight: 700; cursor:pointer; display:inline-flex; align-items:center; gap:.5rem; box-shadow:0 0 0 0 var(--ring); transition: box-shadow .2s, transform .05s, background .2s, border-color .2s, color .2s; text-decoration:none; }
     .btn:hover { transform: translateY(-1px); }
-    .btn:focus-visible { outline: none; box-shadow: 0 0 0 6px var(--ring); }
     .btn-outline { --_bg: transparent; --_fg: var(--brand-2); --_bd: var(--brand-2); }
 
-    /* Divider wave */
-    .wave { width:100%; height:96px; color: var(--panel); }
-
-    /* About */
+    /* About Section */
     .about { background: var(--panel); padding: 4rem 1.5rem; text-align:center; }
-    .about h2 { font-weight: 800; letter-spacing:-.02em; font-size: clamp(1.75rem, 4.2vw, 3rem); margin:0 0 .75rem; }
-    .about p { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); max-width: 48rem; margin: 0 auto; }
+    .about h2 { font-weight:800; letter-spacing:-.02em; font-size:clamp(1.75rem,4.2vw,3rem); margin-bottom:.75rem; }
+    .about p { color: var(--muted); font-size:clamp(1rem,2vw,1.15rem); max-width:48rem; margin:0 auto; }
 
-    /* Gallery */
+    /* Gallery Section */
     .gallery { background: var(--bg); padding: 4rem 1.5rem; text-align:center; }
-    .gallery h2 { font-weight: 800; font-size: clamp(1.75rem, 4.2vw, 3rem); margin-bottom: 2rem; }
+    .gallery h2 { font-weight:800; font-size:clamp(1.75rem,4.2vw,3rem); margin-bottom:2rem; }
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap:1.5rem; max-width:1200px; margin:0 auto;
     }
-    .gallery-grid figure {
-      margin: 0;
-      display: grid;
-      gap: .5rem;
-    }
-    .gallery-grid img {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 1rem;
-      object-fit: cover;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-      transition: transform .3s ease;
-    }
-    .gallery-grid img:hover { transform: scale(1.02); }
-    .gallery-grid figcaption {
-      font-size: .95rem;
-      color: var(--muted);
-      text-align: left;
-    }
+    .gallery-grid figure { margin:0; display:grid; gap:.5rem; }
+    .gallery-grid img { width:100%; aspect-ratio:3/4; border-radius:1rem; object-fit:cover; box-shadow:0 2px 10px rgba(0,0,0,0.25); transition:transform .3s ease; }
+    .gallery-grid img:hover { transform:scale(1.02); }
+    .gallery-grid figcaption { font-size:.95rem; color: var(--muted); text-align:left; }
 
     /* Footer */
-    footer { border-top:1px solid #1f2937; text-align:center; padding: 2.25rem 1.5rem; color: var(--muted); }
+    footer { border-top:1px solid #1f2937; text-align:center; padding:2.25rem 1.5rem; color: var(--muted); }
     footer .small { font-size:.9rem; color:#6b7280; }
 
     /* Code rain canvas */
     canvas#codeRain { position:fixed; inset:0; width:100%; height:100%; z-index:-30; opacity:.25; }
 
-    /* Burger Menu */
-    .burger { display:none; position:fixed; top:1rem; right:1.5rem; z-index:50; flex-direction:column; justify-content:space-around; width:2rem; height:2rem; background:transparent; border:none; cursor:pointer; }
-    .burger div { width:2rem; height:.25rem; background:var(--text); border-radius:.125rem; transition: all 0.3s linear; transform-origin:1px; }
-    .nav-menu { display:none; position:fixed; top:0; right:0; width:100%; height:100%; background:var(--panel); flex-direction:column; justify-content:center; align-items:center; gap:2rem; z-index:40; }
-    .nav-menu a { color:var(--text); font-size:2rem; text-decoration:none; }
-    .nav-menu.active { display:flex; }
-
-    @media (max-width:768px){
-      .burger { display:flex; }
-    }
+    /* Responsive adjustments */
+    @media(max-width:768px){ .cta-row { flex-direction: column; gap:.5rem; } }
+    @media(max-width:480px){ .gallery-grid { gap:1rem; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Background -->
-    <div class="bg" aria-hidden="true">
-      <div class="grid"></div>
-      <div class="parallax" id="parallax">
-        <div class="layer" data-depth="0.3">
-          <div class="blob">
-            <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CyberWear abstract gradient mark">
-              <defs>
-                <radialGradient id="cw-grad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="var(--brand-1)"/>
-                  <stop offset="50%" stop-color="var(--brand-2)"/>
-                  <stop offset="100%" stop-color="var(--brand-3)"/>
-                </radialGradient>
-              </defs>
-              <path id="morphPath" fill="url(#cw-grad)"></path>
-              <animate xlink:href="#morphPath" attributeName="d" dur="16s" repeatCount="indefinite" values="M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z;M462,290Q428,360,356.5,395Q285,430,215,404Q145,378,116,312Q87,246,103,175.5Q119,105,187,78Q255,51,325.5,77.5Q396,104,447.5,177Q499,250,462,290Z;M448,270Q433,340,373.5,383.5Q314,427,243,420Q172,413,127,356Q82,299,84.5,228.5Q87,158,141,114Q195,70,264,63.5Q333,57,388,103Q443,149,451,209.5Q459,270,448,270Z;M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z"></animate>
-            </svg>
-          </div>
+<div class="wrap">
+  <!-- Background layers -->
+  <div class="bg">
+    <div class="grid"></div>
+    <div class="parallax" id="parallax">
+      <div class="layer" data-depth="0.3">
+        <div class="blob">
+          <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <radialGradient id="cw-grad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="var(--brand-1)"/>
+                <stop offset="50%" stop-color="var(--brand-2)"/>
+                <stop offset="100%" stop-color="var(--brand-3)"/>
+              </radialGradient>
+            </defs>
+            <path id="morphPath" fill="url(#cw-grad)"></path>
+            <animate xlink:href="#morphPath" attributeName="d" dur="16s" repeatCount="indefinite"
+            values="M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z;M462,290Q428,360,356.5,395Q285,430,215,404Q145,378,116,312Q87,246,103,175.5Q119,105,187,78Q255,51,325.5,77.5Q396,104,447.5,177Q499,250,462,290Z;M448,270Q433,340,373.5,383.5Q314,427,243,420Q172,413,127,356Q82,299,84.5,228.5Q87,158,141,114Q195,70,264,63.5Q333,57,388,103Q443,149,451,209.5Q459,270,448,270Z;M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z">
+            </animate>
+          </svg>
         </div>
       </div>
-      <div class="fade"></div>
-      <div class="noise"></div>
     </div>
-
-    <!-- Burger Menu -->
-    <button class="burger" aria-label="Toggle Menu"><div></div><div></div><div></div></button>
-    <nav class="nav-menu" aria-label="Mobile navigation">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a id="whatsappLink" href="#" target="_blank" rel="noopener">WhatsApp</a>
-      <a id="discordLink" href="#" target="_blank" rel="noopener">Discord</a>
-      <h5>By Horizon Synergy</h5>
-    </nav>
-
-    <!-- Hero -->
-    <header class="hero">
-      <div class="brand" aria-label="Brand">
-        <span class="brand-name">CyberWear</span>
-        <span class="brand-by">by Horizon Synergy</span>
-      </div>
-      <h1 class="title">Code it. Wear it.</h1>
-      <p class="lead">Sustainable fashion for developers, creators, and innovators. Clothing with Source Code.</p>
-      <canvas id="codeRain" aria-hidden="true"></canvas>
-      <div class="cta-row" role="group" aria-label="Pre-order buttons">
-        <a class="btn" id="whatsappBtn" href="#" target="_blank" rel="noopener">Pre-Order via WhatsApp</a>
-        <a class="btn btn-outline" id="discordBtn" href="#" target="_blank" rel="noopener">Pre-Order via Discord</a>
-      </div>
-    </header>
-
-    <!-- Divider -->
-    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M0,32 C240,96 480,96 720,64 C960,32 1200,32 1440,64 L1440,120 L0,120 Z" fill="currentColor"/>
-    </svg>
-
-    <!-- About -->
-    <section id="about" class="about" aria-labelledby="mission-heading">
-      <h2 id="mission-heading">Our Mission</h2>
-      <p>
-        CyberWear is a sustainable, transparent clothing brand born for the tech community. We merge style and code to create apparel that respects the planet and empowers creators.
-        <b>*Due to financial constraints, we currently only use recycled ♻️ material, such as recycled polyester!! *</b>
-      </p>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Gallery</h2>
-      <div class="gallery-grid">
-        <figure>
-          <img src="https://via.placeholder.com/800x1067?text=CyberWear+1" alt="CyberWear clothing sample 1">
-          <figcaption>Prototype tee — “Clothing with Source Code.”</figcaption>
-        </figure>
-        <figure>
-          <img src="https://via.placeholder.com/800x1067?text=CyberWear+2" alt="CyberWear clothing sample 2">
-          <figcaption>Organic print process — minimal ink, high durability.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://via.placeholder.com/800x1067?text=CyberWear+3" alt="CyberWear clothing sample 3">
-          <figcaption>Recycled polyester blend — soft handfeel tests.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://via.placeholder.com/800x1067?text=CyberWear+4" alt="CyberWear clothing sample 4">
-          <figcaption>Label mockups — transparent sourcing QR.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div>© 2025 CyberWear by <a href="https://horizon-synergy.github.io" target="_blank" rel="noopener">Horizon Synergy</a>. All rights reserved.</div>
-      <div class="small">Made for devs & creators • Transparent & plastic-free</div>
-    </footer>
+    <div class="fade"></div>
+    <div class="noise"></div>
   </div>
 
-  <script>
-    // Links (set once so iframe or standalone both work)
-    const WHATSAPP_LINK = 'https://wa.me/+27743494640?text=I%27m%20interested%20in%20pre-ordering%20CyberWear';
-    const DISCORD_LINK  = 'https://discord.gg/your-preorder-link';
-    document.getElementById('whatsappBtn').href = WHATSAPP_LINK;
-    document.getElementById('discordBtn').href = DISCORD_LINK;
-    document.getElementById('whatsappLink').href = WHATSAPP_LINK;
-    document.getElementById('discordLink').href = DISCORD_LINK;
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="brand">
+      <div class="brand-name">CyberWear</div>
+      <div class="brand-by">by Horizon Synergy</div>
+    </div>
+    <h1 class="title">Code it. Wear it.</h1>
+    <p class="lead">Sustainable fashion for developers, creators, and innovators. Clothing with Source Code.</p>
+    <canvas id="codeRain" aria-hidden="true"></canvas>
+    <div class="cta-row">
+      <a class="btn" id="whatsappBtn" href="#" target="_blank">Pre-Order via WhatsApp</a>
+      <a class="btn btn-outline" id="discordBtn" href="#" target="_blank">Pre-Order via Discord</a>
+    </div>
+  </header>
 
-    // Burger
-    const burger = document.querySelector('.burger');
-    const menu = document.querySelector('.nav-menu');
-    burger.addEventListener('click', ()=>{ menu.classList.toggle('active'); });
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>Our Mission</h2>
+    <p>CyberWear is a sustainable, transparent clothing brand born for the tech community. We merge style and code to create apparel that respects the planet and empowers creators.
+    <b>*Due to financial constraints, we currently only use recycled ♻️ materials, such as recycled polyester!! *</b></p>
+  </section>
 
-    // Parallax
-    (function(){
-      const container = document.getElementById('parallax');
-      const layers = container.querySelectorAll('.layer');
-      const onScroll = () => {
-        const y = window.scrollY || window.pageYOffset;
-        layers.forEach(el => {
-          const depth = parseFloat(el.getAttribute('data-depth')||'0');
-          el.style.transform = `translate3d(0, ${y*depth*0.6}px, 0)`;
-        });
-      };
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive:true });
-    })();
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Our Collection</h2>
+    <div class="gallery-grid">
+      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Hoodie"><figcaption>CyberWear Hoodie</figcaption></figure>
+      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear T-Shirt"><figcaption>CyberWear T-Shirt</figcaption></figure>
+      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Cap"><figcaption>CyberWear Cap</figcaption></figure>
+      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Jacket"><figcaption>CyberWear Jacket</figcaption></figure>
+    </div>
+  </section>
 
-    // Matrix-style code rain
-    (function(){
-      const canvas = document.getElementById('codeRain');
-      const ctx = canvas.getContext('2d');
-      const symbols = '01{}[]<>=+-*/%&|^~$#@!?;:.,\\"\\\'()`';
-      let width, height, columns, drops;
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 CyberWear by <a href="https://horizon-synergy.github.io" style="color:inherit; text-decoration:underline;">Horizon Synergy</a>. All rights reserved.</div>
+    <div class="small">Made for devs & creators • Transparent & plastic‑free</div>
+  </footer>
+</div>
 
-      function resize(){
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        columns = Math.max(1, Math.floor(width / 16));
-        drops = new Array(columns).fill(0).map(() => Math.random() * -height / 16);
-      }
+<script>
+  const WHATSAPP_LINK = 'https://wa.me/+27743494640?text=I\'m%20interested%20in%20pre-ordering%20CyberWear';
+  const DISCORD_LINK  = 'https://discord.gg/your-preorder-link';
+  document.getElementById('whatsappBtn').href = WHATSAPP_LINK;
+  document.getElementById('discordBtn').href = DISCORD_LINK;
 
-      function draw(){
-        // trail fade
-        ctx.fillStyle = 'rgba(10,10,10,0.08)';
-        ctx.fillRect(0, 0, width, height);
+  (function(){
+    const container = document.getElementById('parallax');
+    const layers = container.querySelectorAll('.layer');
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset;
+      layers.forEach(el => { const depth = parseFloat(el.getAttribute('data-depth')||'0'); el.style.transform = `translate3d(0, ${y*depth*0.6}px, 0)`; });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive:true });
+  })();
 
-        ctx.fillStyle = '#10b981';
-        ctx.font = '16px ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace';
-
-        for (let i = 0; i < columns; i++) {
-          const char = symbols[Math.floor(Math.random() * symbols.length)];
-          const x = i * 16;
-          const y = drops[i] * 16;
-
-          ctx.fillText(char, x, y);
-          drops[i] += (Math.random() * 0.9 + 0.6);
-
-          if (y > height && Math.random() > 0.975) {
-            drops[i] = Math.random() * -20;
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-
-      window.addEventListener('resize', resize, { passive:true });
-      resize();
-      draw();
-    })();
-  </script>
+  (function(){
+    const canvas = document.getElementById('codeRain');
+    const ctx = canvas.getContext('2d');
+    const symbols = '01{}[]<>=+-*/%&|^~$#@!?;:.,\"\'()`';
+    let width, height, columns, drops;
+    function resize(){ width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; columns = Math.floor(width/16); drops = Array.from({length:columns},()=>Math.random()*-height); }
+    function draw(){ ctx.fillStyle='rgba(10,10,10,0.08)'; ctx.fillRect(0,0,width,height); ctx.fillStyle='#10b981'; ctx.font='16px ui-monospace, Menlo, Monaco, Consolas, Courier, monospace'; for(let i=0;i<drops.length;i++){ const char=symbols[Math.floor(Math.random()*symbols.length)]; const x=i*16; const y=drops[i]*16; ctx.fillText(char,x,y); drops[i]+=(Math.random()*0.9+0.6); if(y>height&&Math.random()>0.975)drops[i]=Math.random()*-20; } requestAnimationFrame(draw); }
+    window.addEventListener('resize',resize); resize(); draw();
+  })();
+</script>
 </body>
 </html>
+
