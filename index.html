@@ -1,132 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CyberWear — Code it. Wear it.</title>
-  <meta name="description" content="CyberWear — sustainable fashion for developers & creators. Transparent, eco-friendly clothing with source code." />
-  <link rel="canonical" href="https://horizon-synergy.github.io/cyberwear" />
-  <link rel="stylesheet" href="styles.css"/>
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="CyberWear — Code it. Wear it.">
-  <meta property="og:description" content="Sustainable fashion for developers, creators & innovators. Transparent, eco-friendly, clothing with source code.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://horizon-synergy.github.io/cyberwear">
-  <meta property="og:image" content="https://horizon-synergy.github.io/assets/cyberwear-preview.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CyberWear — Code it. Wear it.">
-  <meta name="twitter:description" content="Fashion with source code. Eco-friendly, transparent, and made for developers.">
-  <meta name="twitter:image" content="https://horizon-synergy.github.io/assets/cyberwear-preview.png">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Brand",
-    "name": "CyberWear",
-    "slogan": "Code it. Wear it.",
-    "description": "CyberWear is a sustainable fashion brand for developers and creators. Transparent, eco-friendly, clothing with source code.",
-    "logo": "https://horizon-synergy.github.io/assets/cyberwear-logo.png",
-    "url": "https://horizon-synergy.github.io/cyberwear",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "Horizon Synergy",
-      "url": "https://horizon-synergy.github.io"
-    },
-    "sameAs": [
-      "https://discord.gg/your-preorder-link",
-      "https://wa.me/+27743494640"
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberWear — Code it. Wear it.</title>
+<meta name="description" content="CyberWear — sustainable fashion for developers & creators. Transparent, eco-friendly clothing with source code.">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #121212;
+    --muted: #9ca3af;
+    --text: #ffffff;
+    --brand: #10b981;
+    --ring: rgba(16,185,129,.25);
   }
-  </script>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
- 
+  html, body { height: 100%; font-family: ui-sans-serif, system-ui, Roboto, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+
+  /* Hero Section */
+  header.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 1.5rem 3rem;
+    overflow: hidden;
+  }
+
+  .hero .brand-name { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; line-height:1.1; }
+  .hero .brand-by { font-size: clamp(1rem, 3vw, 1.25rem); color: var(--muted); margin-top: .5rem; }
+  .hero .title { font-size: clamp(2rem, 6vw, 3rem); font-weight: 700; margin: 1rem 0; }
+  .hero .lead { max-width: 600px; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); margin-bottom: 2rem; }
+
+  .cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .cta-row a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    background: var(--brand);
+    color: #fff;
+    text-decoration: none;
+    transition: transform .1s;
+  }
+  .cta-row a:hover { transform: translateY(-2px); }
+  .cta-row .btn-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+
+  /* Sections */
+  section { padding: 4rem 1.5rem; text-align: center; }
+  section h2 { font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: 1.5rem; font-weight: 800; }
+  section p { font-size: clamp(1rem, 2vw, 1.25rem); max-width: 600px; margin: 0 auto; color: var(--muted); }
+
+  /* Gallery */
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .gallery-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 1rem; transition: transform .3s ease; }
+  .gallery-grid img:hover { transform: scale(1.05); }
+
+  /* Footer */
+  footer { background: var(--panel); text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: .9rem; }
+
+  /* Code Rain */
+  canvas#codeRain { position: fixed; inset:0; width: 100%; height:100%; z-index:-10; opacity:.25; }
+
+  /* Responsive tweaks */
+  @media (max-width:768px){
+    .hero { padding: 4rem 1rem 2rem; }
+    .cta-row a { width: 100%; font-size: 1.1rem; padding: 1rem; }
+  }
+</style>
 </head>
 <body>
-<div class="wrap">
-  <!-- Background layers -->
-  <div class="bg">
-    <div class="grid"></div>
-    <div class="parallax" id="parallax">
-      <div class="layer" data-depth="0.3">
-        <div class="blob">
-          <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <radialGradient id="cw-grad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="var(--brand-1)"/>
-                <stop offset="50%" stop-color="var(--brand-2)"/>
-                <stop offset="100%" stop-color="var(--brand-3)"/>
-              </radialGradient>
-            </defs>
-            <path id="morphPath" fill="url(#cw-grad)"></path>
-            <animate xlink:href="#morphPath" attributeName="d" dur="16s" repeatCount="indefinite"
-            values="M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z;M462,290Q428,360,356.5,395Q285,430,215,404Q145,378,116,312Q87,246,103,175.5Q119,105,187,78Q255,51,325.5,77.5Q396,104,447.5,177Q499,250,462,290Z;M448,270Q433,340,373.5,383.5Q314,427,243,420Q172,413,127,356Q82,299,84.5,228.5Q87,158,141,114Q195,70,264,63.5Q333,57,388,103Q443,149,451,209.5Q459,270,448,270Z;M442.5,301.5Q390,363,319,395.5Q248,428,175.5,392.5Q103,357,83.5,283Q64,209,104.5,142.5Q145,76,221.5,63Q298,50,355.5,100Q413,150,451,225Q489,300,442.5,301.5Z">
-            </animate>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="fade"></div>
-    <div class="noise"></div>
-  </div>
 
-  <!-- Hero Section -->
-<!-- Hero Section -->
+<canvas id="codeRain" aria-hidden="true"></canvas>
+
 <header class="hero">
-  <div class="brand">
-    <div class="brand-name">CyberWear</div>
-    <div class="brand-by">by Horizon Synergy</div>
-  </div>
-
-  <h1 class="title">Code it. Wear it.</h1>
-  <p class="lead">
-    Sustainable fashion for developers, creators, and innovators. Clothing with Source Code.
-  </p>
-
-  <canvas id="codeRain" aria-hidden="true"></canvas>
-
+  <div class="brand-name">CyberWear</div>
+  <div class="brand-by">by Horizon Synergy</div>
+  <div class="title">Code it. Wear it.</div>
+  <div class="lead">Sustainable fashion for developers, creators, and innovators. Clothing with Source Code.</div>
   <div class="cta-row">
-    <a class="btn" id="whatsappBtn" href="#" target="_blank">
-      Pre-Order via WhatsApp
-    </a>
-    <a class="btn btn-outline" id="discordBtn" href="#" target="_blank">
-      Pre-Order via Discord
-    </a>
+    <a href="#" id="whatsappBtn">Pre-Order via WhatsApp</a>
+    <a href="#" id="discordBtn" class="btn-outline">Pre-Order via Discord</a>
   </div>
 </header>
 
+<section id="about">
+  <h2>Our Mission</h2>
+  <p>CyberWear is a sustainable, transparent clothing brand for tech enthusiasts. We merge style and code to create apparel that respects the planet and empowers creators.</p>
+</section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>Our Mission</h2>
-    <p>CyberWear is a sustainable, transparent clothing brand born for the tech community. We merge style and code to create apparel that respects the planet and empowers creators.
-    <b>*Due to financial constraints, we currently only use recycled ♻️ materials, such as recycled polyester!! *</b></p>
-  </section>
+<section class="gallery">
+  <h2>Our Collection</h2>
+  <div class="gallery-grid">
+    <img src="https://via.placeholder.com/400x600" alt="CyberWear Hoodie">
+    <img src="https://via.placeholder.com/400x600" alt="CyberWear T-Shirt">
+    <img src="https://via.placeholder.com/400x600" alt="CyberWear Cap">
+    <img src="https://via.placeholder.com/400x600" alt="CyberWear Jacket">
+  </div>
+</section>
 
-  <!-- Gallery Section -->
-  <section class="gallery">
-    <h2>Our Collection</h2>
-    <div class="gallery-grid">
-      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Hoodie"><figcaption>CyberWear Hoodie</figcaption></figure>
-      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear T-Shirt"><figcaption>CyberWear T-Shirt</figcaption></figure>
-      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Cap"><figcaption>CyberWear Cap</figcaption></figure>
-      <figure><img src="https://via.placeholder.com/400x600" alt="CyberWear Jacket"><figcaption>CyberWear Jacket</figcaption></figure>
-    </div>
-  </section>
+<footer>
+  © 2025 CyberWear by <a href="https://horizon-synergy.github.io" style="color:inherit; text-decoration:underline;">Horizon Synergy</a>. All rights reserved.
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    <div>© 2025 CyberWear by <a href="https://horizon-synergy.github.io" style="color:inherit; text-decoration:underline;">Horizon Synergy</a>. All rights reserved.</div>
-    <div class="small">Made for devs & creators • Transparent & plastic‑free</div>
-  </footer>
-</div>
+<script>
+  // Code Rain Effect
+  const canvas = document.getElementById('codeRain');
+  const ctx = canvas.getContext('2d');
+  const symbols = '01{}[]<>=+-*/%&|^~$#@!?;:.,\"\'()`';
+  let width, height, columns, drops;
 
-<script src="main.js">
+  function resize(){ 
+    width = canvas.width = window.innerWidth; 
+    height = canvas.height = window.innerHeight; 
+    columns = Math.floor(width/16); 
+    drops = Array.from({length:columns},()=>Math.random()*-height); 
+  }
+
+  function draw(){
+    ctx.fillStyle='rgba(10,10,10,0.08)'; 
+    ctx.fillRect(0,0,width,height); 
+    ctx.fillStyle='#10b981'; 
+    ctx.font='16px monospace'; 
+    for(let i=0;i<drops.length;i++){
+      const char = symbols[Math.floor(Math.random()*symbols.length)];
+      const x=i*16;
+      const y=drops[i]*16;
+      ctx.fillText(char,x,y);
+      drops[i]+=(Math.random()*0.9+0.6); 
+      if(y>height && Math.random()>0.975)drops[i]=Math.random()*-20; 
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',resize);
+  resize();
+  draw();
+
+  // Buttons
+  document.getElementById('whatsappBtn').href = 'https://wa.me/+27743494640?text=I\'m%20interested%20in%20pre-ordering%20CyberWear';
+  document.getElementById('discordBtn').href = 'https://discord.gg/your-preorder-link';
 </script>
+
 </body>
 </html>
-
