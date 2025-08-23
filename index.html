@@ -1,154 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberWear — Code it. Wear it.</title>
-<meta name="description" content="CyberWear — sustainable fashion for developers & creators. Transparent, eco-friendly clothing with source code.">
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --panel: #121212;
-    --muted: #9ca3af;
-    --text: #ffffff;
-    --brand: #10b981;
-    --ring: rgba(16,185,129,.25);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+Eco-Focused Detailed Prompt with Transparency:
 
-  html, body { height: 100%; font-family: ui-sans-serif, system-ui, Roboto, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+*"Generate a complete, clean, mobile-responsive HTML, CSS, and JavaScript website for 'CyberWear — Code it. Wear it.' with the following features:
 
-  body { display: flex; flex-direction: column; min-height: 100vh; }
+Hero Section:
 
-  /* Hero Section */
-  header.hero {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 5rem 1.5rem 3rem;
-    overflow: hidden;
-  }
+Brand name 'CyberWear' prominently displayed.
 
-  .hero .brand-name { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; line-height:1.1; }
-  .hero .brand-by { font-size: clamp(1rem, 3vw, 1.25rem); color: var(--muted); margin-top: .5rem; }
-  .hero .title { font-size: clamp(2rem, 6vw, 3rem); font-weight: 700; margin: 1rem 0; }
-  .hero .lead { max-width: 600px; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); margin-bottom: 2rem; }
+Subtext 'by Horizon Synergy'.
 
-  .cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-  .cta-row a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 1rem;
-    background: var(--brand);
-    color: #fff;
-    text-decoration: none;
-    transition: transform .1s;
-  }
-  .cta-row a:hover { transform: translateY(-2px); }
-  .cta-row .btn-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+Tagline: 'Code it. Wear it.'
 
-  /* Sections */
-  section { padding: 4rem 1.5rem; text-align: center; }
-  section h2 { font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: 1.5rem; font-weight: 800; }
-  section p { font-size: clamp(1rem, 2vw, 1.25rem); max-width: 600px; margin: 0 auto; color: var(--muted); }
+Short description emphasizing sustainable, eco-friendly, transparent fashion for developers and creators.
 
-  /* Gallery */
-  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-  .gallery-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 1rem; transition: transform .3s ease; }
-  .gallery-grid img:hover { transform: scale(1.05); }
+Two large, mobile-friendly call-to-action buttons: WhatsApp and Discord pre-orders.
 
-  /* Footer */
-  footer { background: var(--panel); text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: .9rem; }
+Animated Background:
 
-  /* Code Rain */
-  canvas#codeRain { position: fixed; inset:0; width: 100%; height:100%; z-index:-10; opacity:.25; }
+Include a subtle animated blob shape behind the hero using SVG with soft gradient colors.
 
-  /* Responsive tweaks */
-  @media (max-width:768px){
-    .hero { padding: 4rem 1rem 2rem; }
-    .cta-row a { width: 100%; font-size: 1.1rem; padding: 1rem; }
-  }
-</style>
-</head>
-<body>
+Include a canvas-based code rain/matrix effect that covers the full screen.
 
-<canvas id="codeRain" aria-hidden="true"></canvas>
+Background should not interfere with text readability.
 
-<header class="hero">
-  <div class="brand-name">CyberWear</div>
-  <div class="brand-by">by Horizon Synergy</div>
-  <div class="title">Code it. Wear it.</div>
-  <div class="lead">Sustainable fashion for developers, creators, and innovators. Clothing with Source Code.</div>
-  <div class="cta-row">
-    <a href="#" id="whatsappBtn">Pre-Order via WhatsApp</a>
-    <a href="#" id="discordBtn" class="btn-outline">Pre-Order via Discord</a>
-  </div>
-</header>
+Sections:
 
-<section id="about">
-  <h2>Our Mission</h2>
-  <p>CyberWear is a sustainable, transparent clothing brand for tech enthusiasts. We merge style and code to create apparel that respects the planet and empowers creators.</p>
-</section>
+About/Mission Section describing CyberWear’s commitment to sustainability, transparency, and eco-friendly materials.
 
-<section class="gallery">
-  <h2>Our Collection</h2>
-  <div class="gallery-grid">
-    <img src="https://via.placeholder.com/400x600" alt="CyberWear Hoodie">
-    <img src="https://via.placeholder.com/400x600" alt="CyberWear T-Shirt">
-    <img src="https://via.placeholder.com/400x600" alt="CyberWear Cap">
-    <img src="https://via.placeholder.com/400x600" alt="CyberWear Jacket">
-  </div>
-</section>
+Include a bold warning: "Due to financial constraints, we are currently using recycled materials such as recycled polyester."
 
-<footer>
-  © 2025 CyberWear by <a href="https://horizon-synergy.github.io" style="color:inherit; text-decoration:underline;">Horizon Synergy</a>. All rights reserved.
-</footer>
+Optionally include a Patreon or donation link encouraging visitors to support the brand.
 
-<script>
-  // Code Rain Effect
-  const canvas = document.getElementById('codeRain');
-  const ctx = canvas.getContext('2d');
-  const symbols = '01{}[]<>=+-*/%&|^~$#@!?;:.,\"\'()`';
-  let width, height, columns, drops;
+Gallery Section with at least 4 placeholder images and captions of apparel items.
 
-  function resize(){ 
-    width = canvas.width = window.innerWidth; 
-    height = canvas.height = window.innerHeight; 
-    columns = Math.floor(width/16); 
-    drops = Array.from({length:columns},()=>Math.random()*-height); 
-  }
+Footer:
 
-  function draw(){
-    ctx.fillStyle='rgba(10,10,10,0.08)'; 
-    ctx.fillRect(0,0,width,height); 
-    ctx.fillStyle='#10b981'; 
-    ctx.font='16px monospace'; 
-    for(let i=0;i<drops.length;i++){
-      const char = symbols[Math.floor(Math.random()*symbols.length)];
-      const x=i*16;
-      const y=drops[i]*16;
-      ctx.fillText(char,x,y);
-      drops[i]+=(Math.random()*0.9+0.6); 
-      if(y>height && Math.random()>0.975)drops[i]=Math.random()*-20; 
-    }
-    requestAnimationFrame(draw);
-  }
+Brand copyright info with a link to Horizon Synergy.
 
-  window.addEventListener('resize',resize);
-  resize();
-  draw();
+Small text noting transparency and eco-friendly focus.
 
-  // Buttons
-  document.getElementById('whatsappBtn').href = 'https://wa.me/+27743494640?text=I\'m%20interested%20in%20pre-ordering%20CyberWear';
-  document.getElementById('discordBtn').href = 'https://discord.gg/your-preorder-link';
-</script>
+Responsive Design:
 
-</body>
-</html>
+Hero, headings, text, buttons, and images scale properly on mobile and tablets.
+
+Buttons remain large and easily clickable on mobile.
+
+Padding and spacing adjust for smaller screens.
+
+Styling:
+
+Modern, minimalistic aesthetic with dark theme.
+
+Use brand gradient colors (green, cyan, blue) for accents.
+
+Easy-to-edit HTML structure.
+
+SEO & Social Sharing:
+
+Include meta tags for title, description, OpenGraph, Twitter cards, and structured data (JSON-LD).
+
+Output:
+
+All code in a single HTML file or separate HTML/CSS/JS files.
+
+Include inline comments explaining main parts.
+
+Ensure the site is visually appealing, functional, fully responsive, highlights CyberWear’s eco-friendly mission, financial transparency, and optionally encourages support via Patreon. Avoid heavy frameworks; use only vanilla HTML, CSS, and JavaScript."*
